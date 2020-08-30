@@ -1,0 +1,721 @@
+@font-face
+  font-family: 'e-icons'
+  src: url('/fonts/e-icons/e-icons.ttf') format('truetype'), url('/fonts/e-icons/e-icons.eot'), url('/fonts/e-icons/e-icons.eot#iefix') format('embedded-opentype'),url('/fonts/e-icons/e-icons.woff2') format('woff2'), url('/fonts/e-icons/e-icons.woff') format('woff'), url('/fonts/e-icons/e-icons.svg#e-icons') format('svg')
+  font-weight: normal
+  font-style: normal
+
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+  @media screen and (-webkit-min-device-pixel-ratio: 0)
+    @font-face
+      font-family: 'e-icons'
+      src: url('/fonts/e-icons/e-icons.svg#e-icons') format('svg')
+
+
+[class^="e-icon-"]:before, [class*=" e-icon-"]:before
+  font-family: "e-icons"
+  font-style: normal
+  font-weight: normal
+  speak: none
+  display: inline-block
+  text-decoration: inherit
+  font-size: 16px
+  text-align: center
+  vertical-align: middle
+  cursor: pointer
+  /* opacity: .8 */
+
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal
+  text-transform: none
+
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1
+
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120% */
+
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3) */
+
+
+.e-icon-add-circular:before
+ content: '\e800'
+ /* '' */
+.e-icon-add-cross:before
+ content: '\e801'
+ /* '' */
+.e-icon-airplane:before
+ content: '\e802'
+ /* '' */
+.e-icon-alarm:before
+ content: '\e803'
+ /* '' */
+.e-icon-arrow-entering:before
+ content: '\e804'
+ /* '' */
+.e-icon-attachment:before
+ content: '\e805'
+ /* '' */
+.e-icon-attach:before
+ content: '\e806'
+ /* '' */
+.e-icon-audio-mute:before
+ content: '\e807'
+ /* '' */
+.e-icon-left-arrow-circle:before
+ content: '\e808'
+ /* '' */
+.e-icon-nav-left-square:before
+ content: '\e809'
+ /* '' */
+.e-icon-checkpoint:before
+ content: '\e80a'
+ /* '' */
+.e-icon-book:before
+ content: '\e80b'
+ /* '' */
+.e-icon-bookmark:before
+ content: '\e80c'
+ /* '' */
+.e-icon-bottle:before
+ content: '\e80d'
+ /* '' */
+.e-icon-nine-circles:before
+ content: '\e80e'
+ /* '' */
+.e-icon-gamepad:before
+ content: '\e80f'
+ /* '' */
+.e-icon-cellphone:before
+ content: '\e810'
+ /* '' */
+.e-icon-phone:before
+ content: '\e811'
+ /* '' */
+.e-icon-center-text:before
+ content: '\e812'
+ /* '' */
+.e-icon-chat:before
+ content: '\e813'
+ /* '' */
+.e-icon-checkmark-circular:before
+ content: '\e814'
+ /* '' */
+.e-icon-checkmark-square:before
+ content: '\e815'
+ /* '' */
+.e-icon-circular-graphic:before
+ content: '\e816'
+ /* '' */
+.e-icon-circular-arrow:before
+ content: '\e817'
+ /* '' */
+.e-icon-badge:before
+ content: '\e818'
+ /* '' */
+.e-icon-circular-target:before
+ content: '\e819'
+ /* '' */
+.e-icon-chat-oval:before
+ content: '\e81a'
+ /* '' */
+.e-icon-add-square:before
+ content: '\e81b'
+ /* '' */
+.e-icon-cocktail:before
+ content: '\e81c'
+ /* '' */
+.e-icon-cloud:before
+ content: '\e81d'
+ /* '' */
+.e-icon-code:before
+ content: '\e81e'
+ /* '' */
+.e-icon-collapse:before
+ content: '\e81f'
+ /* '' */
+.e-icon-comment:before
+ content: '\e820'
+ /* '' */
+.e-icon-pointing-center:before
+ content: '\e821'
+ /* '' */
+.e-icon-moon:before
+ content: '\e822'
+ /* '' */
+.e-icon-cross-square:before
+ content: '\e823'
+ /* '' */
+.e-icon-cross-rounded:before
+ content: '\e824'
+ /* '' */
+.e-icon-cropping:before
+ content: '\e825'
+ /* '' */
+.e-icon-notes:before
+ content: '\e826'
+ /* '' */
+.e-icon-double-arrow:before
+ content: '\e827'
+ /* '' */
+.e-icon-double-arrow-vertical:before
+ content: '\e828'
+ /* '' */
+.e-icon-double-right-arrows:before
+ content: '\e829'
+ /* '' */
+.e-icon-down-square:before
+ content: '\e82b'
+ /* '' */
+.e-icon-nav-down-square:before
+ content: '\e82c'
+ /* '' */
+.e-icon-download-square-second:before
+ content: '\e82d'
+ /* '' */
+.e-icon-single-down-arrow:before
+ content: '\e82e'
+ /* '' */
+.e-icon-clipboard:before
+ content: '\e830'
+ /* '' */
+.e-icon-checkmark:before
+ content: '\e831'
+ /* '' */
+.e-icon-down-circular:before
+ content: '\e832'
+ /* '' */
+.e-icon-cloud-rain:before
+ content: '\e833'
+ /* '' */
+.e-icon-close-circular:before
+ content: '\e834'
+ /* '' */
+.e-icon-copy:before
+ content: '\e835'
+ /* '' */
+.e-icon-download-circular:before
+ content: '\e836'
+ /* '' */
+.e-icon-download:before
+ content: '\e837'
+ /* '' */
+.e-icon-down-arrow-square:before
+ content: '\e838'
+ /* '' */
+.e-icon-download-arrow-square:before
+ content: '\e839'
+ /* '' */
+.e-icon-storm:before
+ content: '\e83a'
+ /* '' */
+.e-icon-game-console:before
+ content: '\e83b'
+ /* '' */
+.e-icon-email-closed:before
+ content: '\e83c'
+ /* '' */
+.e-icon-email-square-outlined-interface-symbol-of-envelope-back:before
+ content: '\e83d'
+ /* '' */
+.e-icon-equalization:before
+ content: '\e83e'
+ /* '' */
+.e-icon-equalizer:before
+ content: '\e83f'
+ /* '' */
+.e-icon-calendar:before
+ content: '\e840'
+ /* '' */
+.e-icon-expand-square-interface-button-of-two-arrows:before
+ content: '\e841'
+ /* '' */
+.e-icon-expanding:before
+ content: '\e842'
+ /* '' */
+.e-icon-fast-forward:before
+ content: '\e843'
+ /* '' */
+.e-icon-empty-file:before
+ content: '\e844'
+ /* '' */
+.e-icon-star:before
+ content: '\e845'
+ /* '' */
+.e-icon-file:before
+ content: '\e846'
+ /* '' */
+.e-icon-film:before
+ content: '\e847'
+ /* '' */
+.e-icon-flag:before
+ content: '\e848'
+ /* '' */
+.e-icon-moon-down:before
+ content: '\e849'
+ /* '' */
+.e-icon-sunset:before
+ content: '\e84a'
+ /* '' */
+.e-icon-folder:before
+ content: '\e84b'
+ /* '' */
+.e-icon-fork:before
+ content: '\e84c'
+ /* '' */
+.e-icon-four-rounded-square:before
+ content: '\e84d'
+ /* '' */
+.e-icon-full-screen:before
+ content: '\e84e'
+ /* '' */
+.e-icon-games:before
+ content: '\e84f'
+ /* '' */
+.e-icon-setting:before
+ content: '\e850'
+ /* '' */
+.e-icon-giftbox:before
+ content: '\e851'
+ /* '' */
+.e-icon-check:before
+ content: '\e852'
+ /* '' */
+.e-icon-presentation:before
+ content: '\e853'
+ /* '' */
+.e-icon-tooltip:before
+ content: '\e854'
+ /* '' */
+.e-icon-hot:before
+ content: '\e855'
+ /* '' */
+.e-icon-compass:before
+ content: '\e856'
+ /* '' */
+.e-icon-images:before
+ content: '\e857'
+ /* '' */
+.e-icon-ink-interface-symbol-of-drop-outline:before
+ content: '\e858'
+ /* '' */
+.e-icon-label:before
+ content: '\e859'
+ /* '' */
+.e-icon-left-alignment:before
+ content: '\e85a'
+ /* '' */
+.e-icon-share-left:before
+ content: '\e85b'
+ /* '' */
+.e-icon-left-circle:before
+ content: '\e85c'
+ /* '' */
+.e-icon-left-arrow-square:before
+ content: '\e85e'
+ /* '' */
+.e-icon-left-arrow:before
+ content: '\e85f'
+ /* '' */
+.e-icon-left-square:before
+ content: '\e860'
+ /* '' */
+.e-icon-left-arrow-cross:before
+ content: '\e861'
+ /* '' */
+.e-icon-download-cloud:before
+ content: '\e862'
+ /* '' */
+.e-icon-headphones:before
+ content: '\e863'
+ /* '' */
+.e-icon-like:before
+ content: '\e864'
+ /* '' */
+.e-icon-link:before
+ content: '\e865'
+ /* '' */
+.e-icon-list:before
+ content: '\e866'
+ /* '' */
+.e-icon-list-thin:before
+ content: '\e867'
+ /* '' */
+.e-icon-lock:before
+ content: '\e868'
+ /* '' */
+.e-icon-logout-square:before
+ content: '\e869'
+ /* '' */
+.e-icon-login-square:before
+ content: '\e86a'
+ /* '' */
+.e-icon-map:before
+ content: '\e86b'
+ /* '' */
+.e-icon-megaphone:before
+ content: '\e86c'
+ /* '' */
+.e-icon-hamburger:before
+ content: '\e86d'
+ /* '' */
+.e-icon-menu-square:before
+ content: '\e86e'
+ /* '' */
+.e-icon-hamburger-rounded:before
+ content: '\e86f'
+ /* '' */
+.e-icon-microphone-tube:before
+ content: '\e870'
+ /* '' */
+.e-icon-microphone:before
+ content: '\e871'
+ /* '' */
+.e-icon-minus-circular:before
+ content: '\e872'
+ /* '' */
+.e-icon-zoom-out:before
+ content: '\e873'
+ /* '' */
+.e-icon-minus-outline:before
+ content: '\e874'
+ /* '' */
+.e-icon-minus-square:before
+ content: '\e875'
+ /* '' */
+.e-icon-monitor:before
+ content: '\e876'
+ /* '' */
+.e-icon-double-music-note:before
+ content: '\e877'
+ /* '' */
+.e-icon-music:before
+ content: '\e878'
+ /* '' */
+.e-icon-note:before
+ content: '\e879'
+ /* '' */
+.e-icon-musical-note:before
+ content: '\e87a'
+ /* '' */
+.e-icon-single-music-note:before
+ content: '\e87b'
+ /* '' */
+.e-icon-microphone-mute:before
+ content: '\e87c'
+ /* '' */
+.e-icon-new-email:before
+ content: '\e87d'
+ /* '' */
+.e-icon-oclock-circular:before
+ content: '\e87e'
+ /* '' */
+.e-icon-note-outlined:before
+ content: '\e87f'
+ /* '' */
+.e-icon-notebook:before
+ content: '\e880'
+ /* '' */
+.e-icon-bell:before
+ content: '\e881'
+ /* '' */
+.e-icon-notification:before
+ content: '\e882'
+ /* '' */
+.e-icon-opened-email:before
+ content: '\e883'
+ /* '' */
+.e-icon-comment-left:before
+ content: '\e884'
+ /* '' */
+.e-icon-paintbrush:before
+ content: '\e885'
+ /* '' */
+.e-icon-paper-airplane:before
+ content: '\e886'
+ /* '' */
+.e-icon-pause:before
+ content: '\e887'
+ /* '' */
+.e-icon-pencil:before
+ content: '\e888'
+ /* '' */
+.e-icon-phone-tube:before
+ content: '\e889'
+ /* '' */
+.e-icon-camera:before
+ content: '\e88a'
+ /* '' */
+.e-icon-pin:before
+ content: '\e88b'
+ /* '' */
+.e-icon-planetary:before
+ content: '\e88c'
+ /* '' */
+.e-icon-play:before
+ content: '\e88d'
+ /* '' */
+.e-icon-portfolio:before
+ content: '\e88e'
+ /* '' */
+.e-icon-load:before
+ content: '\e88f'
+ /* '' */
+.e-icon-print:before
+ content: '\e890'
+ /* '' */
+.e-icon-radio:before
+ content: '\e891'
+ /* '' */
+.e-icon-rain:before
+ content: '\e892'
+ /* '' */
+.e-icon-comment-square:before
+ content: '\e893'
+ /* '' */
+.e-icon-recycling:before
+ content: '\e894'
+ /* '' */
+.e-icon-rewind:before
+ content: '\e895'
+ /* '' */
+.e-icon-single-right-arrow:before
+ content: '\e896'
+ /* '' */
+.e-icon-right-arrow-circle:before
+ content: '\e897'
+ /* '' */
+.e-icon-right-circle:before
+ content: '\e898'
+ /* '' */
+.e-icon-right-signal:before
+ content: '\e899'
+ /* '' */
+.e-icon-share-right:before
+ content: '\e89a'
+ /* '' */
+.e-icon-nav-right-square:before
+ content: '\e89b'
+ /* '' */
+.e-icon-right-square:before
+ content: '\e89c'
+ /* '' */
+.e-icon-right-arrow-square:before
+ content: '\e89d'
+ /* '' */
+.e-icon-tool:before
+ content: '\e89e'
+ /* '' */
+.e-icon-sand-clock:before
+ content: '\e89f'
+ /* '' */
+.e-icon-save:before
+ content: '\e8a0'
+ /* '' */
+.e-icon-search:before
+ content: '\e8a1'
+ /* '' */
+.e-icon-dot-map:before
+ content: '\e8a2'
+ /* '' */
+.e-icon-share-social:before
+ content: '\e8a3'
+ /* '' */
+.e-icon-bag:before
+ content: '\e8a4'
+ /* '' */
+.e-icon-shopping:before
+ content: '\e8a5'
+ /* '' */
+.e-icon-shopping-cart:before
+ content: '\e8a6'
+ /* '' */
+.e-icon-shopping-cart-second:before
+ content: '\e8a7'
+ /* '' */
+.e-icon-shuffle:before
+ content: '\e8a8'
+ /* '' */
+.e-icon-sort-up:before
+ content: '\e8a9'
+ /* '' */
+.e-icon-sort-down:before
+ content: '\e8aa'
+ /* '' */
+.e-icon-speaker:before
+ content: '\e8ab'
+ /* '' */
+.e-icon-speaker-on:before
+ content: '\e8ac'
+ /* '' */
+.e-icon-speaker-off:before
+ content: '\e8ad'
+ /* '' */
+.e-icon-speaker-max:before
+ content: '\e8ae'
+ /* '' */
+.e-icon-speaker-square:before
+ content: '\e8af'
+ /* '' */
+.e-icon-comment-texted:before
+ content: '\e8b0'
+ /* '' */
+.e-icon-square-outline:before
+ content: '\e8b1'
+ /* '' */
+.e-icon-square-shape:before
+ content: '\e8b2'
+ /* '' */
+.e-icon-targeting:before
+ content: '\e8b3'
+ /* '' */
+.e-icon-star-fill:before
+ content: '\e8b4'
+ /* '' */
+.e-icon-store:before
+ content: '\e8b5'
+ /* '' */
+.e-icon-sun:before
+ content: '\e8b6'
+ /* '' */
+.e-icon-sunrise:before
+ content: '\e8b7'
+ /* '' */
+.e-icon-switch-off:before
+ content: '\e8b8'
+ /* '' */
+.e-icon-switch-on:before
+ content: '\e8b9'
+ /* '' */
+.e-icon-tag:before
+ content: '\e8ba'
+ /* '' */
+.e-icon-television:before
+ content: '\e8bb'
+ /* '' */
+.e-icon-text:before
+ content: '\e8bc'
+ /* '' */
+.e-icon-text-paper:before
+ content: '\e8bd'
+ /* '' */
+.e-icon-three:before
+ content: '\e8be'
+ /* '' */
+.e-icon-timer:before
+ content: '\e8bf'
+ /* '' */
+.e-icon-reception:before
+ content: '\e8c0'
+ /* '' */
+.e-icon-triangle:before
+ content: '\e8c1'
+ /* '' */
+.e-icon-trophy:before
+ content: '\e8c2'
+ /* '' */
+.e-icon-two-arrows:before
+ content: '\e8c3'
+ /* '' */
+.e-icon-two-circular-arrows:before
+ content: '\e8c4'
+ /* '' */
+.e-icon-reload:before
+ content: '\e8c5'
+ /* '' */
+.e-icon-two-droplets:before
+ content: '\e8c6'
+ /* '' */
+.e-icon-two-squares:before
+ content: '\e8c7'
+ /* '' */
+.e-icon-unlocked:before
+ content: '\e8c8'
+ /* '' */
+.e-icon-single-up-arrow:before
+ content: '\e8c9'
+ /* '' */
+.e-icon-up-arrow-circle:before
+ content: '\e8ca'
+ /* '' */
+.e-icon-up-square:before
+ content: '\e8cb'
+ /* '' */
+.e-icon-upload-square-second:before
+ content: '\e8cc'
+ /* '' */
+.e-icon-flag-down:before
+ content: '\e8cd'
+ /* '' */
+.e-icon-arrow-square:before
+ content: '\e8ce'
+ /* '' */
+.e-icon-up-arrow-square:before
+ content: '\e8cf'
+ /* '' */
+.e-icon-house-arrow:before
+ content: '\e8d0'
+ /* '' */
+.e-icon-up-circular:before
+ content: '\e8d1'
+ /* '' */
+.e-icon-nav-up-square:before
+ content: '\e8d2'
+ /* '' */
+.e-icon-upload-cloud:before
+ content: '\e8d3'
+ /* '' */
+.e-icon-upload:before
+ content: '\e8d4'
+ /* '' */
+.e-icon-upper-right:before
+ content: '\e8d5'
+ /* '' */
+.e-icon-user:before
+ content: '\e8d7'
+ /* '' */
+.e-icon-single-left-arrow:before
+ content: '\e85d'
+ /* '' */
+.e-icon-video:before
+ content: '\e8d9'
+ /* '' */
+.e-icon-wallet:before
+ content: '\e8da'
+ /* '' */
+.e-icon-sunset-gone:before
+ content: '\e8db'
+ /* '' */
+.e-icon-weekly-calendar-outline:before
+ content: '\e8dc'
+ /* '' */
+.e-icon-weekly-calendar:before
+ content: '\e8dd'
+ /* '' */
+.e-icon-wind-socket:before
+ content: '\e8de'
+ /* '' */
+.e-icon-window:before
+ content: '\e8df'
+ /* '' */
+.e-icon-winds:before
+ content: '\e8e0'
+ /* '' */
+.e-icon-wrench:before
+ content: '\e8e1'
+ /* '' */
+.e-icon-close:before
+ content: '\e8e2'
+ /* '' */
+.e-icon-zoom-in:before
+ content: '\e8e4'
+ /* '' */
