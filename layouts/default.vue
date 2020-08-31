@@ -1,15 +1,18 @@
 <template lang="pug">
-  .app
+  .page
     Header
     Nuxt
+    Footer
 </template>
 
 <script>
   import Header from '@/components/Header/Header';
+  import Footer from '@/components/Footer/Footer';
 
   export default {
     components: {
-      Header
+      Header,
+      Footer
     }
   };
 </script>

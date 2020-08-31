@@ -22,6 +22,10 @@ h3
   font-size: $heading-3-font-size
   line-height: $heading-3-font-size
 
+.page
+  width: 100%
+  min-height: 100vh
+
 .container
   width: 100%
   padding: 0 64px
@@ -41,6 +45,18 @@ h3
 
   &-heading
     margin-bottom: $default-padding * 2
+
+    &-text
+      display: inline-block
+      margin-right: $default-padding
+
+    a
+      text-decoration: none
+      color: $light-black
+
+      &:visited, &:active, &:focus
+        color: $light-black
+        text-decoration: none
 
   > [class^="n-icon-"]
     width: $default-padding * 6

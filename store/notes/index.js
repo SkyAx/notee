@@ -9,7 +9,7 @@ export const state = () => ({
         'а также новая модель организационной деятельности влечет за собой процесс внедрения и модернизации соответствующий условий активизации. ' +
         'Повседневная практика показывает, что новая модель организационной деятельности влечет за собой процесс ' +
         'внедрения и модернизации направлений прогрессивного развития.',
-      todoList: null
+      todoList: []
     },
     {
       id: 2,
@@ -21,13 +21,41 @@ export const state = () => ({
         'Повседневная практика показывает, что новая модель организационной деятельности влечет за собой процесс ' +
         'внедрения и модернизации направлений прогрессивного развития.',
       todoList: [
-        'text1',
-        'text2',
-        'text3',
-        'text4',
-        'text5',
-        'text6',
-        'text7'
+        {
+          id: 1,
+          done: false,
+          text: 'text1'
+        },
+        {
+          id: 2,
+          done: false,
+          text: 'text2'
+        },
+        {
+          id: 3,
+          done: false,
+          text: 'text3'
+        },
+        {
+          id: 4,
+          done: false,
+          text: 'text4'
+        },
+        {
+          id: 5,
+          done: false,
+          text: 'text5'
+        },
+        {
+          id: 6,
+          done: false,
+          text: 'text6'
+        },
+        {
+          id: 7,
+          done: false,
+          text: 'text7'
+        }
       ]
     }
   ]
@@ -42,6 +70,12 @@ export const getters = {
 export const mutations = {
   SET_NOTES(state, payload) {
     state.notes = payload;
+  },
+  UPDATE_NOTE(state, { id, note }) {
+    state.notes = [
+      ...state.notes.filter(note => note.id !== id),
+      note
+    ];
   }
 };
 
@@ -50,6 +84,27 @@ export const actions = {
     this.$axios.get('/notes-list')
     .then(res => {
       commit('SET_NOTES', res.data);
+    });
+  },
+  changeTodoStatus({ getters, commit }, { editTodo, editNote }) {
+    let newNote = getters.NOTES.find(note => note.id === editNote.id);
+
+    newNote = JSON.parse(JSON.stringify(newNote));
+
+    newNote.todoList = newNote.todoList.map(todo => {
+        return todo.id === editTodo.id ?
+          {
+            ...todo,
+            done: !todo.done
+          }
+          :
+          todo;
+      }
+    );
+
+    commit('UPDATE_NOTE', {
+      id: editNote.id,
+      note: newNote
     });
   }
 };
