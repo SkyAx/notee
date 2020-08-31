@@ -1,17 +1,23 @@
 <template lang="pug">
-  .todo-item(@dblclick="onDbclick")
-    form.todo-item-form(@submit.prevent="isEditable = false")
-      NInput(v-if="isEditable" :value="newTodo")
+  .todo-item(@dblclick="onDblclick")
+    form.todo-item-form(v-if="isEditable" @submit.prevent="onTodoSubmit")
+      NInput(v-model="newTodo" ref="input")
     .todo-item-text(v-if="!isEditable") {{ todo }}
+    .todo-item-controls
+      NIcon(:icon="'pencil'" yellow @click="toggleEditable")
+      NIcon(:icon="'cross-rounded'" red)
+      NIcon(:icon="'checkmark'" green)
 </template>
 
 <script>
   import NInput from '@/components/shared/NInput/NInput';
+  import NIcon from '@/components/shared/NIcon/NIcon';
 
   export default {
     name: 'TodoItem',
     components: {
-      NInput
+      NInput,
+      NIcon
     },
     props: {
       todo: {
@@ -26,15 +32,50 @@
       };
     },
     methods: {
-      onDbclick() {
-        console.log('dbclick');
+      onTodoSubmit() {
+        this.newTodo = this.$refs.input.value;
 
+        this.isEditable = false;
+
+        this.$emit('onTodoChange', this.newTodo);
+      },
+      toggleEditable() {
+        if (this.isEditable) {
+          this.newTodo = this.$refs.input.value;
+
+          this.$emit('onTodoChange', this.newTodo);
+
+          this.isEditable = false;
+        } else {
+          this.isEditable = true;
+        }
+      },
+      onDblclick() {
         this.isEditable = true;
       }
     }
   };
 </script>
 
-<style scoped>
+<style lang="sass" scoped>
+  .todo-item
+    width: $default-padding * 40
+    display: flex
+    align-items: center
+    justify-content: space-between
 
+    &-text
+      width: 100%
+      padding: $default-padding 0
+      margin-right: $default-padding
+
+    &-form
+      width: 100%
+
+    &-controls
+      display: flex
+      margin-left: $default-padding * 2
+
+      [class^="n-icon-"]:not(:last-child)
+        margin-right: $default-padding
 </style>

@@ -32,9 +32,9 @@ export default {
   */
   css: [
     './assets/fonts/rubik.sass',
-    './assets/fonts/e-icons.sass',
+    './assets/fonts/n-icons.sass',
     './assets/styles/reset.sass',
-    './assets/styles/base.sass',
+    './assets/styles/base.sass'
   ],
   /*
   ** Plugins to load before mounting the App

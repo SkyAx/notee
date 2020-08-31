@@ -1,0 +1,43 @@
+@import "colors"
+
+$default-box-shadow-opacity:      0.7
+$max-box-shadow-opacity:          0.1
+$hover-box-shadow-opacity:        0.2
+
+$default-box-shadow-x-position:   -4px -4px 8px
+$default-box-shadow-y-position:   4px 4px 8px
+
+$default-checkbox-shadow-x-position: -3px 3px 6px
+$default-checkbox-shadow-y-position: 3px 3px 6px
+
+$active-box-shadow-x-position:    -4px -4px 16px
+$active-box-shadow-y-position:    4px 4px 16px
+
+$default-box-shadow-color:        rgba($total-white, $default-box-shadow-opacity)
+$default-next-box-shadow-color:   rgba($total-black, $max-box-shadow-opacity)
+$input-yellow-box-shadow-color:   rgba($yellow, $max-box-shadow-opacity)
+$input-red-box-shadow-color:      rgba($total-red, $max-box-shadow-opacity)
+$input-green-box-shadow-color:    rgba($almost-green, $max-box-shadow-opacity)
+$input-violet-box-shadow-color:   rgba($violet, $max-box-shadow-opacity)
+
+$default-box-shadow:              $default-box-shadow-x-position $default-box-shadow-color, $default-box-shadow-y-position $default-next-box-shadow-color
+$default-checkbox-box-shadow:     $default-box-shadow-x-position $default-box-shadow-color, $default-checkbox-shadow-y-position $default-next-box-shadow-color
+$default-box-shadow-active:       inset $active-box-shadow-x-position rgba($total-white, 0.2), inset $active-box-shadow-y-position rgba($total-black, 0.2)
+
+$default-hover-box-shadow-color: rgba($total-white, 0.6)
+$yellow-hover-box-shadow-color: rgba(173, 137, 9, $hover-box-shadow-opacity)
+$grapefruit-hover-box-shadow-color: rgba(211, 63, 0, $hover-box-shadow-opacity)
+$skyblue-hover-box-shadow-color: rgba($skyblue, $hover-box-shadow-opacity)
+$grass-hover-box-shadow-color: rgba($almost-green, $hover-box-shadow-opacity)
+$violet-hover-box-shadow-color: rgba($violet, $hover-box-shadow-opacity)
+$black-box-shadow-hover: rgba($light-black, $hover-box-shadow-opacity)
+
+$yellow-box-shadow-hover: $default-box-shadow-x-position $default-hover-box-shadow-color, $default-box-shadow-y-position $yellow-hover-box-shadow-color
+$grapefruit-box-shadow-hover: $default-box-shadow-x-position $default-hover-box-shadow-color, $default-box-shadow-y-position $grapefruit-hover-box-shadow-color
+$skyblue-box-shadow-hover: $default-box-shadow-x-position $default-hover-box-shadow-color, $default-box-shadow-y-position $skyblue-hover-box-shadow-color
+$grass-box-shadow-hover: $default-box-shadow-x-position $default-hover-box-shadow-color, $default-box-shadow-y-position $grass-hover-box-shadow-color
+$violet-box-shadow-hover: $default-box-shadow-x-position $default-box-shadow-color, $default-box-shadow-y-position $violet-hover-box-shadow-color
+
+
+$input-focus-box-shadow: $default-box-shadow-x-position $default-box-shadow-color, $default-box-shadow-y-position $input-yellow-box-shadow-color
+$input-error-box-shadow: $default-box-shadow-x-position $default-box-shadow-color, $default-box-shadow-y-position $input-red-box-shadow-color

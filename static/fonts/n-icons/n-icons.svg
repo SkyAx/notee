@@ -3,8 +3,8 @@
 <svg xmlns="http://www.w3.org/2000/svg">
 <metadata>Copyright (C) 2020 by original authors @ fontello.com</metadata>
 <defs>
-<font id="e-icons" horiz-adv-x="1000" >
-<font-face font-family="e-icons" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<font id="n-icons" horiz-adv-x="1000" >
+<font-face font-family="n-icons" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
 <missing-glyph horiz-adv-x="1000" />
 <glyph glyph-name="add-circular" unicode="&#xe800;" d="M500 850c-276 0-500-224-500-500 0-276 224-500 500-500 276 0 500 224 500 500 0 276-224 500-500 500z m0-938c-242 0-437 196-437 438 0 242 195 438 437 438 242 0 438-196 438-438 0-242-196-438-438-438z m188 469h-157v157c0 17-14 31-31 31-17 0-31-14-31-31v-157h-156c-18 0-32-14-32-31 0-17 14-31 32-31h156v-156c0-18 14-32 31-32 17 0 31 14 31 32v156h157c17 0 31 14 31 31 0 17-14 31-31 31z" horiz-adv-x="1000" />
 
