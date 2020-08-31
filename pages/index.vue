@@ -1,20 +1,25 @@
 <template lang="pug">
   .container
-    TodoItem(:todo="todo" @onTodoChange="onTodoChange")
+    .note-list
+      Note(v-for="note in NOTES" :note="note")
+      NoteCreate
 </template>
 
 <script>
-  import TodoItem from '../components/TodoItem/TodoItem';
+  import NoteCreate from '@/components/NoteCreate/NoteCreate';
+  import TodoList from '@/components/TodoList/TodoList';
+  import Note from '@/components/Note/Note';
+  import { mapGetters } from 'vuex';
 
   export default {
     name: 'Index',
     components: {
-      TodoItem
+      NoteCreate,
+      Note,
+      TodoList
     },
-    data() {
-      return {
-        todo: 'text'
-      };
+    computed: {
+      ...mapGetters('notes', ['NOTES'])
     },
     methods: {
       onTodoChange(todo) {

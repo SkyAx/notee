@@ -4,8 +4,8 @@
       NInput(v-model="newTodo" ref="input")
     .todo-item-text(v-if="!isEditable") {{ todo }}
     .todo-item-controls
-      NIcon(:icon="'pencil'" yellow @click="toggleEditable")
-      NIcon(:icon="'cross-rounded'" red)
+      NIcon(@click="toggleEditable" :icon="'pencil'" yellow)
+      NIcon(@click="$emit('onDeleteTodo', todo)" :icon="'cross-rounded'" red)
       NIcon(:icon="'checkmark'" green)
 </template>
 
@@ -57,9 +57,8 @@
   };
 </script>
 
-<style lang="sass" scoped>
+<style lang="sass">
   .todo-item
-    width: $default-padding * 40
     display: flex
     align-items: center
     justify-content: space-between

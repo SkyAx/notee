@@ -1,10 +1,12 @@
 <template lang="pug">
   .n-input-container(ref="container")
     .n-input-label(v-if="label") {{ label }}
-    input.n-input(
+    component.n-input(
+      :is="textarea ? 'textarea' :  'input'"
       @input="input"
       @focusin="focusIn"
       @focusout="focusOut"
+      :class="{textarea : textarea}"
       :type="type"
       :value="value"
       :placeholder="placeholder"
@@ -34,6 +36,11 @@
         type: String,
         required: false,
         default: ''
+      },
+      textarea: {
+        type: Boolean,
+        required: false,
+        default: false
       }
     },
     methods: {
@@ -50,7 +57,7 @@
   };
 </script>
 
-<style lang="sass" scoped>
+<style lang="sass">
   .n-input
     width: 100%
     border: none
@@ -58,6 +65,7 @@
     border-radius: $default-border-radius
     padding: $default-padding
     background: $transparent
+    font-family: $rubik
 
     ::-webkit-input-placeholder
       color: $dark-grey
@@ -73,6 +81,9 @@
 
     &:focus
       color: $dark-grey
+
+    &.textarea
+      height: 240px
 
     &-container
       color: $middle-black

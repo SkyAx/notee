@@ -10,6 +10,48 @@ body
   *
     box-sizing: border-box
 
+h1
+  font-size: $heading-1-font-size
+  line-height: $heading-1-font-size
+
+h2
+  font-size: $heading-2-font-size
+  line-height: $heading-2-font-size
+
+h3
+  font-size: $heading-3-font-size
+  line-height: $heading-3-font-size
+
 .container
   width: 100%
   padding: 0 64px
+
+.note
+  margin-bottom: auto
+  background: $total-white
+  padding: $default-padding * 2
+  border-radius: $default-border-radius
+  box-shadow: $default-box-shadow
+  color: $light-black
+  text-decoration: none
+
+  &:visited, &:active, &:focus
+    color: $light-black
+    text-decoration: none
+
+  &-heading
+    margin-bottom: $default-padding * 2
+
+  > [class^="n-icon-"]
+    width: $default-padding * 6
+    height: $default-padding * 6
+
+    &::before
+      font-size: $default-padding * 6
+
+.note-list
+  width: 100%
+  display: grid
+  grid-template-columns: 1fr 1fr 1fr
+  grid-gap: $default-padding * 4
+  grid-auto-rows: minmax(min-content, max-content)
