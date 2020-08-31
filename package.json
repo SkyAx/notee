@@ -1,6 +1,8 @@
 {
   "name": "note-app",
   "version": "1.0.0",
+  "description": "Note app",
+  "author": "sunder <alexander@darklight.by>",
   "private": true,
   "scripts": {
     "dev": "nuxt",
@@ -12,6 +14,7 @@
     "lint": "npm run lint:js && npm run lint:style"
   },
   "dependencies": {
+    "@nuxt/http": "latest",
     "@nuxtjs/axios": "^5.12.0",
     "@nuxtjs/pwa": "^3.0.0-beta.20",
     "nuxt": "^2.14.0",
