@@ -1,5 +1,5 @@
 <template lang="pug">
-  .todo-list
+  .todo-list(:class="{scrollable: scrollable}")
     TodoItem(
       v-for="(todo, idx) in list"
       :key="idx"
@@ -31,6 +31,11 @@
         type: Boolean,
         required: false,
         default: false
+      },
+      scrollable: {
+        type: Boolean,
+        required: false,
+        default: false
       }
     }
   };
@@ -38,9 +43,11 @@
 
 <style lang="sass" scoped>
   .todo-list
-    height: 200px
     padding: $default-padding
     overflow-y: scroll
+
+    &.scrollable
+      height: 200px
 
     .todo-item
       &:not(:last-child)

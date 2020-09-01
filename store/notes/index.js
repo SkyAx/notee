@@ -76,6 +76,11 @@ export const mutations = {
       ...state.notes.filter(note => note.id !== id),
       note
     ];
+  },
+  DELETE_NOTE(state, noteToDelete) {
+    const noteId = state.notes.findIndex(note => note.id === noteToDelete.id);
+
+    state.notes.splice(noteId, 1);
   }
 };
 
@@ -106,6 +111,11 @@ export const actions = {
       id: editNote.id,
       note: newNote
     });
+  },
+  deleteExistNote({ commit }, note) {
+    debugger;
+
+    commit('DELETE_NOTE', note);
   }
 };
 

@@ -4,13 +4,14 @@
       nuxt-link(:to="`/note/${note.id}`")
         span.note-heading-text {{ note.noteHeading }}
         NIcon(:icon="'right-arrow-circle'")
+      NIcon(@click="$emit('onDelete', note)" :icon="'cross-square'" red)
     p.note-text {{ note.noteText | ellipsisFilter }}
     TodoList(
       v-if="note.todoList.length"
       :list="note.todoList"
+      :scrollable="true"
       :hiddenCheckbox="true"
       :hiddenControls="true"
-      @onTodoChecked="onTodoChecked"
     )
 </template>
 
@@ -18,7 +19,6 @@
   import TodoList from '@/components/TodoList/TodoList';
   import NIcon from '@/components/shared/NIcon/NIcon';
   import { ellipsisFilter } from '@/filters';
-  import { mapActions } from 'vuex';
 
   export default {
     name: 'Note',
@@ -33,15 +33,6 @@
       note: {
         type: Object,
         required: true
-      }
-    },
-    methods: {
-      ...mapActions('notes', ['changeTodoStatus']),
-      onTodoChecked(todo) {
-        this.changeTodoStatus({
-          editTodo: todo,
-          editNote: this.note
-        });
       }
     }
   };
