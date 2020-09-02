@@ -24,37 +24,37 @@ export const state = () => ({
         {
           id: 1,
           done: false,
-          text: 'text1'
+          text: 'Todo 1'
         },
         {
           id: 2,
-          done: false,
-          text: 'text2'
+          done: true,
+          text: 'Todo 2'
         },
         {
           id: 3,
           done: false,
-          text: 'text3'
+          text: 'Todo 3'
         },
         {
           id: 4,
           done: false,
-          text: 'text4'
+          text: 'Todo 4'
         },
         {
           id: 5,
           done: false,
-          text: 'text5'
+          text: 'Todo 5'
         },
         {
           id: 6,
           done: false,
-          text: 'text6'
+          text: 'Todo 6'
         },
         {
           id: 7,
           done: false,
-          text: 'text7'
+          text: 'Todo 7'
         }
       ]
     }
