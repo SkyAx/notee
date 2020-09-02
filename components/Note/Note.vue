@@ -9,15 +9,18 @@
     TodoList(
       v-if="note.todoList.length"
       :list="note.todoList"
-      :scrollable="true"
-      :hiddenCheckbox="true"
-      :hiddenControls="true"
+      scrollable
+      hiddenCheckbox
+      hiddenControls
+      hiddenTodoAdd
+      @onTodoChange="onTodoChange"
     )
 </template>
 
 <script>
   import TodoList from '@/components/TodoList/TodoList';
   import NIcon from '@/components/shared/NIcon/NIcon';
+  import { mapActions } from 'vuex';
   import { ellipsisFilter } from '@/filters';
 
   export default {
@@ -33,6 +36,16 @@
       note: {
         type: Object,
         required: true
+      }
+    },
+    methods: {
+      ...mapActions('notes', ['changeTodo']),
+      onTodoChange(text, id) {
+        this.changeTodo({
+          editTodoId: id,
+          editTodoText: text,
+          editNote: this.note
+        });
       }
     }
   };

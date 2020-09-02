@@ -6,12 +6,13 @@
       @input="input"
       @focusin="focusIn"
       @focusout="focusOut"
-      :class="{textarea : textarea}"
+      :class="[className, {textarea : textarea}]"
       :type="type"
       :value="value"
       :placeholder="placeholder"
       :label="label"
-    )
+    ) {{ value }}
+    .n-input-hint(v-if="hint" :class="className") {{ hint }}
 </template>
 
 <script>
@@ -41,6 +42,16 @@
         type: Boolean,
         required: false,
         default: false
+      },
+      className: {
+        type: String,
+        required: false,
+        default: ''
+      },
+      hint: {
+        type: String,
+        required: false,
+        default: ''
       }
     },
     methods: {
@@ -93,11 +104,20 @@
       box-shadow: $default-box-shadow
       border: 1px solid $transparent
       border-radius: $default-border-radius
+      position: relative
 
       &.focused, &:focus
         color: $dark-grey
         border-color: $yellow
         box-shadow: $input-focus-box-shadow
+
+      &.error
+        color: $total-red
+        border-color: $total-red
+        box-shadow: $input-error-box-shadow
+
+    &-hint
+      position: absolute
 
       &.error
         color: $total-red

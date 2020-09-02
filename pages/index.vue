@@ -2,7 +2,8 @@
   .container
     .note-list
       Note(
-        v-for="note in NOTES"
+        v-for="(note, idx) in NOTES"
+        :key="idx"
         :note="note"
         @onDelete="onDelete"
       )
@@ -21,8 +22,9 @@
   import NoteCreate from '@/components/NoteCreate/NoteCreate';
   import TodoList from '@/components/TodoList/TodoList';
   import Note from '@/components/Note/Note';
-  import { mapActions, mapGetters } from 'vuex';
   import NModal from '@/components/shared/NModal/NModal';
+  import { mapGetters } from 'vuex';
+  import { deleteNote } from '@/mixins';
 
   export default {
     name: 'Index',
@@ -32,31 +34,9 @@
       Note,
       TodoList
     },
-    data() {
-      return {
-        isModalShow: false,
-        noteToDelete: null
-      };
-    },
+    mixins: [deleteNote],
     computed: {
       ...mapGetters('notes', ['NOTES'])
-    },
-    methods: {
-      ...mapActions('notes', ['deleteExistNote']),
-      onDelete(note) {
-        this.isModalShow = true;
-        this.noteToDelete = note;
-      },
-      cancelDelete() {
-        this.isModalShow = false;
-        this.noteToDelete = null;
-      },
-      deleteNote() {
-        if (this.noteToDelete) {
-          this.deleteExistNote(this.noteToDelete);
-          this.cancelDelete();
-        }
-      }
     }
   };
 </script>
