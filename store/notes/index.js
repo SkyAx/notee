@@ -71,6 +71,17 @@ export const mutations = {
   SET_NOTES(state, payload) {
     state.notes = payload;
   },
+  ADD_NOTE(state, payload) {
+    const nextId = state.notes.length ? state.notes.length + 1 : 1;
+
+    state.notes = [
+      ...state.notes,
+      {
+        nextId,
+        ...payload
+      }
+    ];
+  },
   UPDATE_NOTE(state, { id, note }) {
     state.notes = [
       ...state.notes.filter(note => note.id !== id),
@@ -164,6 +175,9 @@ export const actions = {
       id: editNote.id,
       note: newNote
     });
+  },
+  addNewNote({ commit }, note) {
+    commit('ADD_NOTE', note);
   },
   editExistNote({ getters, commit }, { id, heading, text, todoList }) {
     let newNote = getters.NOTES.find(note => note.id === id);

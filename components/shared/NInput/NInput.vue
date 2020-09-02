@@ -116,8 +116,14 @@
         border-color: $total-red
         box-shadow: $input-error-box-shadow
 
+    &-label
+      position: absolute
+      top: -$default-padding * 3
+      color: $dark-grey
+
     &-hint
       position: absolute
+      bottom: -$default-padding * 3
 
       &.error
         color: $total-red

@@ -31,6 +31,24 @@ h3
   width: 100%
   padding: 0 64px
 
+.page-heading
+  display: flex
+  align-items: center
+  justify-content: space-between
+  margin-bottom: $default-padding * 4
+
+  .note-heading
+    margin-bottom: 0
+
+  .controls
+    display: flex
+
+    .n-button
+      width: auto
+
+      &:not(:last-child)
+        margin-right: $default-padding * 2
+
 .note
   margin-bottom: auto
   background: $total-white

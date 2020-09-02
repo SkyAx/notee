@@ -1,6 +1,6 @@
 <template lang="pug">
   .container(v-if="note")
-    .heading
+    .page-heading
       h1.note-heading(v-if="!editable") {{ heading }}
       NInput(v-if="editable" v-model="heading")
       .controls
@@ -147,24 +147,6 @@
 </script>
 
 <style lang="sass" scoped>
-  .heading
-    display: flex
-    align-items: center
-    justify-content: space-between
-    margin-bottom: $default-padding * 4
-
-    .note-heading
-      margin-bottom: 0
-
-  .controls
-    display: flex
-
-    .n-button
-      width: auto
-
-      &:not(:last-child)
-        margin-right: $default-padding * 2
-
   .note-text
     margin-bottom: $default-padding * 4
 </style>
