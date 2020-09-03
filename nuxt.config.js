@@ -75,8 +75,8 @@ module.exports = {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    baseURL: 'http://localhost:3008/api',
-    browserBaseURL: 'http://localhost:3008/api'
+    baseURL: 'https://notee.qweb.by/api',
+    browserBaseURL: 'https://notee.qweb.by/api'
   },
   /*
   ** Build configuration
