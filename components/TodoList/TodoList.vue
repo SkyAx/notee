@@ -78,6 +78,7 @@
       },
       onAddTodo() {
         this.$emit('onAddNewTodo', this.newTodo);
+        this.newTodo = '';
         this.isEditable = false;
       }
     }
@@ -90,7 +91,7 @@
 
     &.scrollable
       overflow-y: scroll
-      height: 200px
+      max-height: 200px
 
     .todo-item
       &:not(:last-child)
