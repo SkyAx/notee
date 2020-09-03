@@ -4,8 +4,10 @@ Simple SPA application for creating notes and todos.
 
 ### Stack
 - Nuxt 
-- ~~Express~~
-- ~~Mongodb~~
+- Express
+- MongoDB
+
+[Notee app link](https://notee.qweb.by/)
 
 ![Notee image](README_IMG.png)
 
