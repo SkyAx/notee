@@ -52,13 +52,13 @@
           this.updateExistNote(note);
         },
         get() {
-          return this.NOTES.find(note => note.id === parseInt(this.$route.params.id)) || null;
+          return this.NOTES.find(note => note._id === this.$route.params.id) || null;
         }
       },
       heading: {
         set(heading) {
           this.editExistNote({
-            id: this.note.id,
+            _id: this.note._id,
             heading: heading
           });
         },
@@ -69,7 +69,7 @@
       text: {
         set(text) {
           this.editExistNote({
-            id: this.note.id,
+            _id: this.note._id,
             text: text
           });
         },
@@ -80,7 +80,7 @@
       todoList: {
         set(todoList) {
           this.editExistNote({
-            id: this.note.id,
+            _id: this.note._id,
             todoList: todoList
           });
         },
@@ -89,8 +89,13 @@
         }
       }
     },
+    mounted() {
+      if (!this.NOTES.length) {
+        this.getNotes();
+      }
+    },
     methods: {
-      ...mapActions('notes', ['changeTodoStatus', 'changeTodo', 'deleteTodo', 'addTodo', 'editExistNote', 'updateExistNote']),
+      ...mapActions('notes', ['getNotes', 'changeTodoStatus', 'changeTodo', 'deleteTodo', 'addTodo', 'editExistNote', 'updateExistNote']),
       onTodoChecked(todo) {
         this.changeTodoStatus({
           editTodo: todo,

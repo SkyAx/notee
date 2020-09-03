@@ -1,4 +1,7 @@
-export default {
+require('dotenv').config();
+
+// eslint-disable-next-line nuxt/no-cjs-in-config
+module.exports = {
   /*
   ** Nuxt rendering mode
   ** See https://nuxtjs.org/api/configuration-mode
@@ -70,7 +73,10 @@ export default {
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
-  axios: {},
+  axios: {
+    baseURL: 'http://localhost:3000/api',
+    browserBaseURL: 'http://localhost:3000/api'
+  },
   /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/
@@ -85,5 +91,10 @@ export default {
     // eslint-disable-next-line no-unused-vars
     extend (config, ctx) {
     }
-  }
+  },
+  server: {
+    host: process.env.HOST,
+    port: process.env.PORT
+  },
+  serverMiddleware: ['~/api/index.js']
 };

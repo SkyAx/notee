@@ -23,7 +23,7 @@
   import TodoList from '@/components/TodoList/TodoList';
   import Note from '@/components/Note/Note';
   import NModal from '@/components/shared/NModal/NModal';
-  import { mapGetters } from 'vuex';
+  import { mapActions, mapGetters } from 'vuex';
   import { deleteNote } from '@/mixins';
 
   export default {
@@ -37,6 +37,12 @@
     mixins: [deleteNote],
     computed: {
       ...mapGetters('notes', ['NOTES'])
+    },
+    beforeMount() {
+      this.getNotes();
+    },
+    methods: {
+      ...mapActions('notes', ['getNotes'])
     }
   };
 </script>

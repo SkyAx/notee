@@ -1,16 +1,15 @@
-const express = require('express');
+import express from 'express';
+
+import notes from './routes/notes';
 
 const app = express();
+const router = express.Router();
 
-const notes = require('./routes/notes');
+router.use(notes);
 
-app.use(notes);
+app.use('/', router);
 
-module.exports = app;
-
-if (require.main === module) {
-  const port = process.env.PORT || 3001;
-  app.listen(port, () => {
-    console.log(`API server listening on port ${port}`);
-  });
-}
+module.exports = {
+  path: '/api',
+  handler: app
+};

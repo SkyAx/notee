@@ -1,13 +1,13 @@
 <template lang="pug">
   .note
     h2.note-heading
-      nuxt-link(:to="`/note/${note.id}`")
-        span.note-heading-text {{ note.noteHeading }}
+      nuxt-link(:to="`/note/${note._id}`")
+        span.note-heading-text(v-if="note.noteHeading") {{ note.noteHeading }}
         NIcon(:icon="'right-arrow-circle'")
       NIcon(@click="$emit('onDelete', note)" :icon="'cross-square'" red)
-    p.note-text {{ note.noteText | ellipsisFilter }}
+    p.note-text(v-if="note.noteText") {{ note.noteText | ellipsisFilter }}
     TodoList(
-      v-if="note.todoList.length"
+      v-if="note.todoList && note.todoList.length"
       :list="note.todoList"
       scrollable
       hiddenCheckbox

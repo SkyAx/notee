@@ -1,64 +1,5 @@
 export const state = () => ({
-  notes: [
-    {
-      id: 1,
-      noteHeading: 'First Note',
-      noteText: 'С другой стороны укрепление и развитие структуры в значительной степени обуславливает создание позиций,' +
-        ' занимаемых участниками в отношении поставленных задач. Разнообразный и богатый опыт начало повседневной работы по ' +
-        'формированию позиции требуют от нас анализа дальнейших направлений развития. Идейные соображения высшего порядка, ' +
-        'а также новая модель организационной деятельности влечет за собой процесс внедрения и модернизации соответствующий условий активизации. ' +
-        'Повседневная практика показывает, что новая модель организационной деятельности влечет за собой процесс ' +
-        'внедрения и модернизации направлений прогрессивного развития.',
-      todoList: []
-    },
-    {
-      id: 2,
-      noteHeading: 'Second Note',
-      noteText: 'С другой стороны укрепление и развитие структуры в значительной степени обуславливает создание позиций,' +
-        ' занимаемых участниками в отношении поставленных задач. Разнообразный и богатый опыт начало повседневной работы по ' +
-        'формированию позиции требуют от нас анализа дальнейших направлений развития. Идейные соображения высшего порядка, ' +
-        'а также новая модель организационной деятельности влечет за собой процесс внедрения и модернизации соответствующий условий активизации. ' +
-        'Повседневная практика показывает, что новая модель организационной деятельности влечет за собой процесс ' +
-        'внедрения и модернизации направлений прогрессивного развития.',
-      todoList: [
-        {
-          id: 1,
-          done: false,
-          text: 'Todo 1'
-        },
-        {
-          id: 2,
-          done: true,
-          text: 'Todo 2'
-        },
-        {
-          id: 3,
-          done: false,
-          text: 'Todo 3'
-        },
-        {
-          id: 4,
-          done: false,
-          text: 'Todo 4'
-        },
-        {
-          id: 5,
-          done: false,
-          text: 'Todo 5'
-        },
-        {
-          id: 6,
-          done: false,
-          text: 'Todo 6'
-        },
-        {
-          id: 7,
-          done: false,
-          text: 'Todo 7'
-        }
-      ]
-    }
-  ]
+  notes: []
 });
 
 export const getters = {
@@ -72,24 +13,19 @@ export const mutations = {
     state.notes = payload;
   },
   ADD_NOTE(state, payload) {
-    const nextId = state.notes.length ? state.notes.length + 1 : 1;
-
     state.notes = [
       ...state.notes,
-      {
-        nextId,
-        ...payload
-      }
+      payload
     ];
   },
-  UPDATE_NOTE(state, { id, note }) {
+  UPDATE_NOTE(state, { _id, note }) {
     state.notes = [
-      ...state.notes.filter(note => note.id !== id),
+      ...state.notes.filter(note => note._id !== _id),
       note
     ];
   },
   DELETE_NOTE(state, noteToDelete) {
-    const noteId = state.notes.findIndex(note => note.id === noteToDelete.id);
+    const noteId = state.notes.findIndex(note => note._id === noteToDelete._id);
 
     state.notes.splice(noteId, 1);
   }
@@ -97,12 +33,12 @@ export const mutations = {
 
 export const actions = {
   getNotes({ commit }) {
-    this.$axios.get('/notes-list').then(res => {
+    this.$axios.get('/note-list').then(res => {
       commit('SET_NOTES', res.data);
     });
   },
   changeTodoStatus({ getters, commit }, { editTodo, editNote }) {
-    let newNote = getters.NOTES.find(note => note.id === editNote.id);
+    let newNote = getters.NOTES.find(note => note._id === editNote._id);
 
     newNote = JSON.parse(JSON.stringify(newNote));
 
@@ -117,13 +53,21 @@ export const actions = {
       }
     );
 
-    commit('UPDATE_NOTE', {
-      id: editNote.id,
-      note: newNote
+    this.$axios.post('/update-note', {
+      _id: newNote._id,
+      noteHeading: newNote.noteHeading,
+      noteText: newNote.noteText,
+      todoList: newNote.todoList
+    })
+    .then(note => {
+      commit('UPDATE_NOTE', {
+        _id: note._id,
+        note: note
+      });
     });
   },
   changeTodo({ getters, commit }, { editTodoId, editTodoText, editNote }) {
-    let newNote = getters.NOTES.find(note => note.id === editNote.id);
+    let newNote = getters.NOTES.find(note => note._id === editNote._id);
 
     newNote = JSON.parse(JSON.stringify(newNote));
 
@@ -138,13 +82,21 @@ export const actions = {
       }
     );
 
-    commit('UPDATE_NOTE', {
-      id: editNote.id,
-      note: newNote
+    this.$axios.post('/update-note', {
+      _id: newNote._id,
+      noteHeading: newNote.noteHeading,
+      noteText: newNote.noteText,
+      todoList: newNote.todoList
+    })
+    .then(note => {
+      commit('UPDATE_NOTE', {
+        _id: note._id,
+        note: note
+      });
     });
   },
   deleteTodo({ getters, commit }, { editNote, deleteTodo }) {
-    let newNote = getters.NOTES.find(note => note.id === editNote.id);
+    let newNote = getters.NOTES.find(note => note._id === editNote._id);
 
     newNote = JSON.parse(JSON.stringify(newNote));
 
@@ -153,13 +105,21 @@ export const actions = {
 
     newNote.todoList.splice(todoIdx, 1);
 
-    commit('UPDATE_NOTE', {
-      id: editNote.id,
-      note: newNote
+    this.$axios.post('/update-note', {
+      _id: newNote._id,
+      noteHeading: newNote.noteHeading,
+      noteText: newNote.noteText,
+      todoList: newNote.todoList
+    })
+    .then(note => {
+      commit('UPDATE_NOTE', {
+        _id: note._id,
+        note: note
+      });
     });
   },
   addTodo({ getters, commit }, { editNote, todoText }) {
-    let newNote = getters.NOTES.find(note => note.id === editNote.id);
+    let newNote = getters.NOTES.find(note => note._id === editNote._id);
 
     const newTodoId = newNote.todoList.length ? newNote.todoList[newNote.todoList.length - 1].id + 1 : 1;
 
@@ -171,16 +131,29 @@ export const actions = {
       done: false
     });
 
-    commit('UPDATE_NOTE', {
-      id: editNote.id,
-      note: newNote
+    this.$axios.post('/update-note', {
+      _id: newNote._id,
+      noteHeading: newNote.noteHeading,
+      noteText: newNote.noteText,
+      todoList: newNote.todoList
+    })
+    .then(note => {
+      commit('UPDATE_NOTE', {
+        _id: note._id,
+        note: note
+      });
     });
   },
-  addNewNote({ commit }, note) {
-    commit('ADD_NOTE', note);
+  async addNewNote({ commit }, newNote) {
+    await this.$axios.post('/note', {
+      ...newNote
+    })
+    .then(note => {
+      commit('ADD_NOTE', note);
+    });
   },
-  editExistNote({ getters, commit }, { id, heading, text, todoList }) {
-    let newNote = getters.NOTES.find(note => note.id === id);
+  editExistNote({ getters, commit }, { _id, heading, text, todoList }) {
+    let newNote = getters.NOTES.find(note => note._id === _id);
 
     newNote = JSON.parse(JSON.stringify(newNote));
 
@@ -192,18 +165,32 @@ export const actions = {
     };
 
     commit('UPDATE_NOTE', {
-      id: newNote.id,
+      _id: newNote._id,
       note: newNote
     });
   },
-  updateExistNote({ commit }, note) {
-    commit('UPDATE_NOTE', {
-      id: note.id,
-      note: note
+  updateExistNote({ commit }, newNote) {
+    this.$axios.post('/update-note', {
+      _id: newNote._id,
+      noteHeading: newNote.noteHeading,
+      noteText: newNote.noteText,
+      todoList: newNote.todoList
+    })
+    .then(note => {
+      commit('UPDATE_NOTE', {
+        _id: note._id,
+        note: note
+      });
     });
   },
-  deleteExistNote({ commit }, note) {
-    commit('DELETE_NOTE', note);
+  async deleteExistNote({ commit }, note) {
+    await this.$axios.post('/delete-note', {
+      _id: note._id
+    })
+    // eslint-disable-next-line no-unused-vars
+    .then(res => {
+      commit('DELETE_NOTE', note);
+    });
   }
 };
 

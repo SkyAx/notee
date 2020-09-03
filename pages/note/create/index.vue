@@ -82,7 +82,7 @@
       onAddNote() {
         this.addNewNote({
           noteHeading: this.heading,
-          noteText: this.text,
+          noteText: this.text || '',
           todoList: this.todoList ? this.todoList : []
         });
         this.$router.push('/');

@@ -1,29 +1,16 @@
-const { Router } = require('express');
+import express from 'express';
 
-const router = Router();
+import { getNotes, addNote, updateNote, deleteNote } from '../controllers/note.controller';
 
-// Mock Users
-const users = [
-  { name: 'Alexandre' },
-  { name: 'Pooya' },
-  { name: 'Sébastien' }
-];
+const router = express.Router();
 
-/* GET users listing. */
-// eslint-disable-next-line no-unused-vars
-router.get('/users', function (req, res, next) {
-  res.json(users);
-});
+router.get('/note-list', getNotes);
 
-/* GET user by ID. */
-// eslint-disable-next-line no-unused-vars
-router.get('/users/:id', function (req, res, next) {
-  const id = parseInt(req.params.id);
-  if (id >= 0 && id < users.length) {
-    res.json(users[id]);
-  } else {
-    res.sendStatus(404);
-  }
-});
+router.post('/note', addNote);
 
-module.exports = router;
+router.post('/update-note', updateNote);
+
+router.post('/delete-note', deleteNote);
+
+export default router;
+
