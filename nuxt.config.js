@@ -16,6 +16,7 @@ module.exports = {
   ** Headers of the page
   ** See https://nuxtjs.org/api/configuration-head
   */
+  telemetry: false,
   head: {
     title: process.env.npm_package_name || '',
     meta: [
